@@ -11,6 +11,5 @@ export const navLinks: NavItem[] = [
   { label: "Series", path: "/series" },
   { label: "Bookmarks", path: "/library" },
   { label: "Forum", path: "#" },
-  { label: "Merch", path: "#" },
   { label: "Resources", hasDropdown: true },
 ];

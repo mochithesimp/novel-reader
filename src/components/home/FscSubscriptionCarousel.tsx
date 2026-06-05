@@ -12,7 +12,7 @@ const FscBadge = () => (
 );
 
 const FscSubscriptionCard = ({ offer }: { offer: FscSubscriptionOffer }) => (
-  <article className="flex flex-col overflow-hidden rounded-xl bg-ww-fsc-card shadow-sm">
+  <article className="fsc-subscription-card flex flex-col overflow-hidden rounded-xl bg-ww-panel">
     <h3 className="px-4 pt-4 text-center text-sm font-semibold text-ww-text-bright">
       {offer.title}
     </h3>

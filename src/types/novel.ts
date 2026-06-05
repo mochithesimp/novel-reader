@@ -80,3 +80,86 @@ export interface FscSubscriptionOffer {
   status: NovelStatus;
   priceMonthly: string;
 }
+
+export interface NovelReview {
+  id: number;
+  username: string;
+  badge?: string;
+  badgeColor?: string;
+  timeAgo: string;
+  recommended: boolean;
+  content: string;
+  likes: number;
+  dislikes: number;
+  comments: number;
+}
+
+export interface NovelSubscriptionTier {
+  id: number;
+  label: string;
+  price: string;
+  tierName: string;
+  description: string;
+}
+
+export interface RelatedNovelItem extends Novel {
+  approval: number;
+  badge?: string;
+}
+
+export interface NovelChapterEntry {
+  id: number;
+  title: string;
+  date: string;
+  karmaCost?: number;
+}
+
+export interface NovelVolume {
+  id: number;
+  title: string;
+  chapterCount: number;
+  chapters: NovelChapterEntry[];
+}
+
+export interface NovelChapterTabData {
+  latestChapter: string;
+  updatedAgo: string;
+  sortOptions: readonly string[];
+  volumes: NovelVolume[];
+}
+
+export interface ChampionAccessCard {
+  id: string;
+  header: string;
+  headerGradient: string;
+  value: string;
+  label: string;
+}
+
+export interface ChampionTabData {
+  headline: string;
+  subtitle: string;
+  tagline: string;
+  accessCards: ChampionAccessCard[];
+  tiers: NovelSubscriptionTier[];
+}
+
+export interface NovelDetail extends Novel {
+  approval: number;
+  translator: string;
+  reviewCount: number;
+  chapterCount: number;
+  licensedFrom: string;
+  genres: string[];
+  tags: string[];
+  shortSynopsis: string;
+  fullSynopsis: string;
+  translatorNote: string;
+  freeChaptersLabel: string;
+  freeChaptersCountdown: string;
+  reviews: NovelReview[];
+  subscriptionTiers: NovelSubscriptionTier[];
+  relatedNovels: RelatedNovelItem[];
+  chapterTab: NovelChapterTabData;
+  championTab: ChampionTabData;
+}
