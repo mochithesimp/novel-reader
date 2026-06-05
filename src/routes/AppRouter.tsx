@@ -13,6 +13,9 @@ import Novel from "../pages/Novel/Novel";
 import Chapter from "../pages/Chapter/Chapter";
 import Search from "../pages/Search/Search";
 import Library from "../pages/Library/Library";
+import Profile from "../pages/Profile/Profile";
+import MyAudiobooks from "../pages/MyAudiobooks/MyAudiobooks";
+import MyEbooks from "../pages/MyEbooks/MyEbooks";
 
 const AppRouter = () => {
     return (
@@ -34,6 +37,12 @@ const AppRouter = () => {
                     <Route path="/search" element={<Search />} />
 
                     <Route path="/library" element={<Library />} />
+
+                    <Route path="/profile" element={<Profile />} />
+
+                    <Route path="/my-audiobooks" element={<MyAudiobooks />} />
+
+                    <Route path="/my-ebooks" element={<MyEbooks />} />
 
                     <Route path="/novel/:id" element={<Novel />} />
 

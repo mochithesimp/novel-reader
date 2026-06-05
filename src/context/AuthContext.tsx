@@ -13,6 +13,7 @@ const STORAGE_KEY = "ww-auth";
 
 interface AuthUser {
   username: string;
+  email: string;
 }
 
 interface AuthContextValue {
@@ -29,7 +30,11 @@ const readStoredUser = (): AuthUser | null => {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as AuthUser;
-    return parsed?.username ? parsed : null;
+    if (!parsed?.username) return null;
+    return {
+      username: parsed.username,
+      email: parsed.email ?? "user@example.com",
+    };
   } catch {
     return null;
   }
@@ -49,7 +54,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = useCallback((account: string, password: string) => {
     const normalized = account.trim().toLowerCase();
     if (normalized === VALID_USERNAME && password === VALID_PASSWORD) {
-      setUser({ username: VALID_USERNAME });
+      setUser({
+        username: VALID_USERNAME,
+        email: "user@example.com",
+      });
       return true;
     }
     return false;

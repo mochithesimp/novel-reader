@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { User } from "lucide-react";
 
 import { useAuth } from "../../context/AuthContext";
@@ -8,11 +8,11 @@ import NavDropdownPanel from "./NavDropdownPanel";
 import ThemeToggle from "./ThemeToggle";
 
 const menuItems = [
-  "Profile",
-  "Notifications",
-  "My Audiobooks",
-  "My Ebooks",
-  "Settings",
+  { label: "Profile", to: "/profile" },
+  { label: "Notifications", to: "/profile?tab=notifications" },
+  { label: "My Audiobooks", to: "/my-audiobooks" },
+  { label: "My Ebooks", to: "/my-ebooks" },
+  { label: "Settings", to: "/profile?tab=settings" },
 ] as const;
 
 const LoggedInUserMenu = () => {
@@ -51,14 +51,14 @@ const LoggedInUserMenu = () => {
 
         <div className="py-1">
           {menuItems.map((item) => (
-            <a
-              key={item}
-              href="#"
+            <Link
+              key={item.label}
+              to={item.to}
               className="block px-4 py-2.5 text-sm text-ww-text-bright transition hover:bg-ww-panel-hover hover:text-ww-accent"
               onClick={() => setOpen(false)}
             >
-              {item}
-            </a>
+              {item.label}
+            </Link>
           ))}
           <button
             type="button"
