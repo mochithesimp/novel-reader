@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Clock, ThumbsUp } from "lucide-react";
+import { Clock, Medal, ThumbsUp } from "lucide-react";
 
 import { CoverIconPill, StatusBadge } from "../common/CoverOverlays";
 import CarouselControls from "../common/CarouselControls";
@@ -20,15 +20,15 @@ const TopSeriesSection = () => {
         {topSeriesByGenre.map((item) => (
           <article
             key={item.id}
-            className="overflow-hidden rounded-xl shadow-lg"
+            className="flex flex-col overflow-hidden rounded-2xl px-4 pb-5 pt-4 text-center shadow-lg"
             style={{ background: item.gradient }}
           >
-            <div className="px-4 pb-2 pt-4">
-              <h3 className="text-lg font-extrabold text-ww-text-bright">{item.genre}</h3>
-            </div>
+            <h3 className="text-base font-extrabold text-white drop-shadow-sm">
+              {item.genre}
+            </h3>
 
-            <div className="mx-4 mb-3">
-              <div className="relative aspect-[2/3] overflow-hidden rounded-md shadow-md">
+            <div className="mx-auto mt-3 max-w-[130px]">
+              <div className="relative aspect-[2/3] overflow-hidden rounded-md shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
                 <img
                   src={item.novel.cover}
                   alt={item.novel.title}
@@ -45,23 +45,26 @@ const TopSeriesSection = () => {
               </div>
             </div>
 
-            <div className="bg-white/90 px-4 pb-4 pt-2 text-neutral-900">
-              <h4 className="line-clamp-2 text-sm font-extrabold">{item.novel.title}</h4>
-              <div className="mt-2 flex items-center gap-2 text-xs">
-                <span className="inline-flex items-center gap-1">
-                  <ThumbsUp size={12} />
-                  {item.novel.approval}%
-                </span>
-                <span
-                  className={`h-4 w-4 rounded-full ${
-                    item.medal === "gold" ? "bg-yellow-500" : "bg-ww-accent"
-                  }`}
+            <h4 className="mt-4 text-base font-extrabold leading-snug text-neutral-900">
+              {item.novel.title}
+            </h4>
+
+            <div className="mt-2 flex items-center justify-center gap-1.5 text-xs text-neutral-600">
+              <ThumbsUp size={12} className="text-ww-accent" />
+              <span>{item.novel.approval}%</span>
+              {item.medal && (
+                <Medal
+                  size={14}
+                  className={
+                    item.medal === "gold" ? "text-yellow-500" : "text-ww-accent"
+                  }
                 />
-              </div>
-              <p className="mt-2 line-clamp-3 text-xs text-gray-600">
-                {item.novel.description}
-              </p>
+              )}
             </div>
+
+            <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-neutral-500">
+              {item.novel.description}
+            </p>
           </article>
         ))}
       </div>

@@ -12,10 +12,17 @@ interface Props {
   novel: Novel;
   rank?: number;
   showMeta?: boolean;
+  showTitleBelow?: boolean;
   blurred?: boolean;
 }
 
-const CoverCard = ({ novel, rank, showMeta = false, blurred = false }: Props) => (
+const CoverCard = ({
+  novel,
+  rank,
+  showMeta = false,
+  showTitleBelow = false,
+  blurred = false,
+}: Props) => (
   <Link to={`/novel/${novel.id}`} className="group block shrink-0">
     <div className="relative aspect-[2/3] overflow-hidden rounded-md bg-ww-surface">
       <img
@@ -49,6 +56,12 @@ const CoverCard = ({ novel, rank, showMeta = false, blurred = false }: Props) =>
           {novel.title}
         </p>
       </div>
+    )}
+
+    {showTitleBelow && !showMeta && (
+      <p className="mt-2 line-clamp-2 text-sm font-medium text-ww-text-bright group-hover:text-ww-accent">
+        {novel.title}
+      </p>
     )}
   </Link>
 );

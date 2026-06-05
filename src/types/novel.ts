@@ -44,12 +44,18 @@ export interface RankedNovel extends Novel {
   approval: number;
 }
 
+export interface TrendingSidebarNovel extends Novel {
+  rank: number;
+  approval: number;
+  chapterCount: number;
+}
+
 export interface GenreSeries {
   id: number;
   genre: string;
   gradient: string;
   novel: Novel;
-  medal: "gold" | "blue";
+  medal?: "gold" | "blue";
 }
 
 export interface RecentUpdate {
@@ -64,4 +70,13 @@ export interface RecentUpdate {
 export interface SeriesItem extends Novel {
   approval: number;
   genres: string[];
+}
+
+export interface FscSubscriptionOffer {
+  id: number;
+  slug: string;
+  title: string;
+  cover: string;
+  status: NovelStatus;
+  priceMonthly: string;
 }

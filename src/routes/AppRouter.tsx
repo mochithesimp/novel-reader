@@ -1,7 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import AuthLayout from "../layouts/AuthLayout";
 import MainLayout from "../layouts/MainLayout";
 
+import ForgotPassword from "../pages/Auth/ForgotPassword";
+import Login from "../pages/Auth/Login";
+import SignUp from "../pages/Auth/SignUp";
 import Home from "../pages/Home/Home";
 import Series from "../pages/Series/Series";
 import Ebooks from "../pages/Ebooks/Ebooks";
@@ -14,6 +18,12 @@ const AppRouter = () => {
     return (
         <BrowserRouter>
             <Routes>
+                <Route element={<AuthLayout />}>
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                </Route>
+
                 <Route element={<MainLayout />}>
                     <Route path="/" element={<Home />} />
 

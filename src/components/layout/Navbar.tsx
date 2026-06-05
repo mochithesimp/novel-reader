@@ -3,7 +3,7 @@ import { Search } from "lucide-react";
 
 import WuxiaLogo from "../common/WuxiaLogo";
 import ResourcesDropdown from "./ResourcesDropdown";
-import UserMenuDropdown from "./UserMenuDropdown";
+import NavbarActions from "./NavbarActions";
 import { navLinks } from "../../constants/navConfig";
 import { useHideOnScroll } from "../../hooks/useHideOnScroll";
 
@@ -68,7 +68,7 @@ const Navbar = () => {
             />
           </label>
 
-          <UserMenuDropdown />
+          <NavbarActions />
         </div>
       </div>
     </header>
